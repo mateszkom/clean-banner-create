@@ -58,14 +58,14 @@
     // Save full-size banner image
     const fullBannerImage = fullBannerCanvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
     const fullBannerLink = document.createElement("a");
-    fullBannerLink.setAttribute("download", `banner-full-tlo-${name}-1900x950px.jpg`);
+    fullBannerLink.setAttribute("download", `baner-full-tlo-${name}-1900x950px.jpg`);
     fullBannerLink.setAttribute("href", fullBannerImage);
     fullBannerLink.click();
 
     // Save mobile banner image
     const mobileBannerImage = mobileBannerCanvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
     const mobileBannerLink = document.createElement("a");
-    mobileBannerLink.setAttribute("download", `banner-mobile-tlo-${name}-500x800px.jpg`);
+    mobileBannerLink.setAttribute("download", `baner-mobile-tlo-${name}-500x800px.jpg`);
     mobileBannerLink.setAttribute("href", mobileBannerImage);
     mobileBannerLink.click();
 }
