@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Banner Creator</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+</head>
+<body class="bg-dark" >
+	<div class="container mt-5">
+		<div class="row justify-content-center">
+			<div class="col-md-6">
+				<form class="p-3 bg-body rounded text-light">			
+					<h1>Create clean banner</h1>
+					<div class="form-group ">
+						<label for="color">Color hex code:</label>
+						<input type="text" class="form-control" id="color" placeholder="eg. #ffffff">
+					</div>
+					<div class="form-group">
+						<label for="name">Banner name:</label>
+						<input type="text" class="form-control" id="name" placeholder="Enter name">
+					</div>
+					<button type="button" class="btn btn-primary" onclick="createBanner()">Create banners</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-NRM7YlyYkCCjK8zIb9o3FzlGJ81Kj2T/z7NncpN84ImB8+D1yCvT1T2GJuvN/3f" crossorigin="anonymous"></script>
+
+	<!-- Link to Bootstrap JS -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script>
+	function createBanner() {
+    // Get input values
+    const color = document.getElementById("color").value;
+    const name = document.getElementById("name").value;
+
+
+    // Create canvas for full-size banner
+    const fullBannerCanvas = document.createElement("canvas");
+    fullBannerCanvas.width = 1900;
+    fullBannerCanvas.height = 950;
+    const fullBannerContext = fullBannerCanvas.getContext("2d");
+
+    // Create canvas for mobile banner
+    const mobileBannerCanvas = document.createElement("canvas");
+    mobileBannerCanvas.width = 500;
+    mobileBannerCanvas.height = 800;
+    const mobileBannerContext = mobileBannerCanvas.getContext("2d");
+
+    // Set banner background color
+    fullBannerContext.fillStyle = color;
+    fullBannerContext.fillRect(0, 0, fullBannerCanvas.width, fullBannerCanvas.height);
+    mobileBannerContext.fillStyle = color;
+    mobileBannerContext.fillRect(0, 0, mobileBannerCanvas.width, mobileBannerCanvas.height);
+
+   
+
+    // Save full-size banner image
+    const fullBannerImage = fullBannerCanvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
+    const fullBannerLink = document.createElement("a");
+    fullBannerLink.setAttribute("download", `banner-full-tlo-${name}-1900x950px.jpg`);
+    fullBannerLink.setAttribute("href", fullBannerImage);
+    fullBannerLink.click();
+
+    // Save mobile banner image
+    const mobileBannerImage = mobileBannerCanvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
+    const mobileBannerLink = document.createElement("a");
+    mobileBannerLink.setAttribute("download", `banner-mobile-tlo-${name}-500x800px.jpg`);
+    mobileBannerLink.setAttribute("href", mobileBannerImage);
+    mobileBannerLink.click();
+}
+</script>
+</body>
+</html>
